@@ -1,4 +1,5 @@
 # Ambiente desarrollo
+## Dependencias en Choco
 1. Descargar Chocolatey
 ```powershell
 Set-ExecutionPolicy AllSigned
@@ -28,3 +29,28 @@ npm install -g ionic
 
 5. Agregar las variables de ambiente
 Seguir estas instrucciones con atención: [https://cordova.apache.org/docs/en/latest/guide/platforms/android/index.html#setting-environment-variables](https://cordova.apache.org/docs/en/latest/guide/platforms/android/index.html#setting-environment-variables)
+
+## Software por separado
+### Visual Studio
+1. Descargar e instalar Visual Studio Community Editio
+https://visualstudio.microsoft.com/vs/community/
+2. En el menu de modulos a instalar hay que elegir los siguientes:
+- .NET desktop enviroment
+- ASP.NET and web development
+![modules](https://visualstudio.microsoft.com/wp-content/uploads/2017/02/Community-page-installer-1.png)
+3. Para utilizar DevExpress es necesario hablar con algún otro miembro del equipo
+
+### Nuget
+1. Descargar la última versión de Nuget en el directorio `C:/bin`
+https://www.nuget.org/downloads
+2. ¡OJO! No correr el ejecutable de descarga
+3. Navegar a las variables de ambiente y en la variable `Path` agregar `C:/bin`
+![enviroment](https://trevorsullivan.net/wp-content/uploads/2016/07/Environment-Variables.png)
+4. Crear un PAT (Personal Access Token)  
+[Aquí como generar uno](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line), el token tiene que todos los accesos a `repo` y `write:packages`, `read:packages`, y `delete:packages`.  
+*Este token es único y no vuele a salir, guardenlo bien*
+5. Correr el siguiente comando:
+```bash
+nuget sources add -name "Github Packages" -Source https://nuget.pkg.github.com/procesoseficientes/ind
+ex.json -Username <usuario de github> -Password <PAT>
+```
